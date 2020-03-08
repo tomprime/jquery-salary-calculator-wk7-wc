@@ -10,24 +10,34 @@ function onReady() {
 }
 
 function handleSubmitClick(event) {
-    console.log("In handleSubmitClick() function.");
+    console.log('In handleSubmitClick() function.');
     event.preventDefault();
     const firstNameInput = $('#firstNameInput').val();
     const lastNameInput = $('#lastNameInput').val();
     //TODO Check that ID is unique, not used already, 
-    //before inserting a new employee: 
+    //before inserting a new employee. ID should be 
+    //unique so later in removeRow() function only 
+    //one, and the correct employee, is removed. 
 
     const iDInput = $('#iDInput').val();
     const titleInput = $('#titleInput').val();
+    //TODO data check that a whole number is entered for salary. 
     const annualSalaryInput = $('#annualSalaryInput').val();
     employees.push({firstNameInput, lastNameInput, iDInput, titleInput, annualSalaryInput});
-    console.log("employees[] is:", employees);
+    console.log('New employee pushed to employees array.');
+    console.log('employees[] currently is:', employees);
     displayEmployees();
+    //clear out form fields:
+    $('#firstNameInput').val('');
+    $('#lastNameInput').val('');
+    $('#iDInput').val('');
+    $('#titleInput').val('');
+    $('#annualSalaryInput').val('');
 }
 
 function removeRow(event) {
-    console.log("In removeRow() function.");
-    console.log("this.parent() is:", $(this).parent().parent());
+    console.log('In removeRow() function.');
+    console.log('this.parent() is:', $(this).parent().parent());
     $(this).parent().parent().remove();
     //${this} example:
     //<button class="button" id="3456">Delete</button>
@@ -38,7 +48,7 @@ function removeRow(event) {
             employees.splice(i, 1);
         }
     }
-    console.log("employees[] is:", employees);
+    console.log('employees[] is:', employees);
     //"redraw" with displayEmployees() after 
     //employees[] was updated: 
     displayEmployees();
@@ -50,10 +60,11 @@ function removeRow(event) {
  * the DOM. 
  */
 function displayEmployees() {
-    console.log("In displayEmployees() function.");
+    console.log('In displayEmployees() function.');
     $('#employeeTableBody').empty();
     for(let employee of employees) {
         console.log('employee is:', employee);
+        //TODO sanitize input for security. 
         const row = `<tr><td>${employee.firstNameInput}</td>
                     <td>${employee.lastNameInput}</td> 
                     <td>${employee.iDInput}</td> 
