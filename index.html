@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <script src="scripts/client.js" charset="utf-8"></script>
+  <script src="scripts/jquery-3.4.1.min.js"></script>
+  <script src="scripts/client.js"></script>
   <title>Week 7 Weekend Chanlenge - Salary Calculator</title>
   <link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
@@ -17,44 +18,61 @@
     <section id="addEmployeeForm">
       <h2>Add Employee</h2>
       <form id="form1">
-        <table>
+        <table class="solidBorder">
           <tbody>
             <tr>
-              <td>
+              <td class="noBottomBorder">
                 <label id="firstNameLabel" for="firstNameInput">First Name</label>: 
                 <input id="firstNameInput" type="text">
               </td>
-              <td>
+              <td class="noBottomBorder">
                 <label id="lastNameLabel" for="lastNameInput">Last Name</label>: 
                 <input id="lastNameInput" type="text">
               </td>
-              <td>
+              <td class="noBottomBorder">
                 <label id="iDLabel" for="iDInput">ID</label>: 
                 <input id="iDInput" type="text">
               </td>
-              <td>
-                <label id="titleLabel" for="titleInput">Label</label>: 
+              <td class="noBottomBorder">
+                <label id="titleLabel" for="titleInput">Title</label>: 
                 <input id="titleInput" type="text">
               </td>
-              <td>
-                <label id="iDLabel" for="iDInput">ID</label>: 
+              <td class="noBottomBorder">
+                <label id="annualSalaryLabel" for="annualSalaryInput">Annual Salary</label>: 
                 <input id="annualSalaryInput" type="text">
               </td>
             </tr>
             <tr>
-              <td class="alignRight" colspan="5">
-                <button type="submit">Submit</button>
+              <td class="alignRight noBottomBorder" colspan="5">
+                <button type="submit" id="submitButton" class="button">Submit</button>
               </td>
             </tr>
           </tbody>
         </table>
-
-       
-        
-       
       </form>
-    </section>
+    </section> <!-- end Add Employee Form --> 
+
+    <section id="employeeTable">
+      <h2>Employee Table</h2>
+        <table class="solidBorder">
+          <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Annual Salary</th>
+            <th class="noBorder"></th>
+          </thead>
+          <tbody id="employeeTableBody">
+            <!-- dynamically add and remove employee rows here -->
+          </tbody>
+        </table>
+        <p id="totalSalaryParagraph">Total Monthly Salaries: <span id="salariesTotal"></span></p>
+    </section><!-- end Employee Table-->
   </main>
 
+  <footer>
+    Super Awesome Code Company Inc. &copy; 2020
+  </footer>
 </body>
 </html>
