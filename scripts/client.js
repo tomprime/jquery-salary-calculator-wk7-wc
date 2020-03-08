@@ -1,5 +1,10 @@
 let employees = [];
 
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
+
 $(document).ready(onReady);
 
 //run after DOM loads: 
@@ -69,7 +74,7 @@ function displayEmployees() {
                     <td>${employee.lastNameInput}</td> 
                     <td>${employee.iDInput}</td> 
                     <td>${employee.titleInput}</td> 
-                    <td>${employee.annualSalaryInput}</td> 
+                    <td>${formatter.format(employee.annualSalaryInput)}</td> 
                     <td><button class="button" id="${employee.iDInput}">Delete</button></td></tr>`;
         $('#employeeTableBody').append(row);
     }
@@ -78,13 +83,18 @@ function displayEmployees() {
 
 function displaySalaryTotal() {
     let salaryTotal = 0;
+
     for(let employee of employees) {
         salaryTotal += Number(employee.annualSalaryInput);
     }
-    const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    });
+
+    if(salaryTotal > 20000) {
+        $('#totalSalaryParagraph').addClass('warning');
+    }
+    else {
+        $('#totalSalaryParagraph').removeClass('warning');
+    }
+
     $('#salariesTotal').empty();
     $('#salariesTotal').append(formatter.format(salaryTotal));
 }

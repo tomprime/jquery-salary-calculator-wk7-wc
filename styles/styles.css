@@ -59,6 +59,15 @@ input[type="text"] {
     border: 1px solid black;
 }
 
+.fullWidth {
+    width: 100%;
+}
+
+.warning {
+    color: white;
+    background-color: red;
+}
+
 footer {
     padding: 4px;
     width: 100%;
